@@ -1,0 +1,94 @@
+plugins {
+    id 'application'
+    id 'java'
+    id "com.github.johnrengelman.shadow" version "4.0.1"
+    id 'ru.vyarus.quality' version '3.2.0'
+    id "com.eriwen.gradle.js" version "2.14.1"
+    id "com.eriwen.gradle.css" version "2.14.0"
+}
+
+group 'be.howest.ti'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+javascript.source {
+    dev {
+        js {
+            srcDir "src/main/resources/webroot/js"
+            include "*.js"
+            exclude "*.min.js"
+        }
+    }
+}
+
+
+jshint {
+    tasks.jshint.source = javascript.source.dev.js.files
+    tasks.jshint.dest = file("${buildDir}/jshint.out")
+    tasks.jshint.reporter = 'checkstyle'
+    tasks.jshint.outputToStdOut = true
+    tasks.jshint.ignoreExitCode = false
+    jshint.options = [expr: "true", unused: "true"]
+}
+mainClassName = 'io.vertx.core.Launcher'
+
+def vertxVersion = '3.5.4'
+def mainVerticleName = 'server'
+
+configurations {
+    htmlValidation
+}
+
+dependencies{
+    compile "io.vertx:vertx-core:$vertxVersion"
+    compile "io.vertx:vertx-web:$vertxVersion"
+    compile "io.vertx:vertx-jdbc-client:$vertxVersion"
+    compile group: 'com.h2database', name: 'h2', version: '1.4.197'
+    compile group: 'com.zaxxer', name: 'HikariCP', version: '3.2.0'
+    compile group: 'org.tinylog', name: 'tinylog', version: '1.3.5'
+
+    testCompile "io.vertx:vertx-unit:$vertxVersion"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    htmlValidation group: 'nu.validator', name: 'validator', version: '18.11.5'
+}
+
+
+run {
+    args = ['run', mainVerticleName, "--launcher-class=$mainClassName"]
+}
+
+shadowJar {
+    classifier = 'fat'
+    manifest {
+        attributes 'Main-Verticle': "$mainVerticleName"
+    }
+    mergeServiceFiles {
+        include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
+    }
+}
+
+quality {
+    spotbugsVersion = '3.1.8'
+}
+
+task validateHTML(type: JavaExec) {
+    workingDir = 'src/main/resources/webroot'
+    main 'nu.validator.client.SimpleCommandLineValidator'
+    classpath configurations.htmlValidation
+    args '--skip-non-html', './'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.10'
+}
+
+configure(validateHTML) {
+    group = 'verification'
+    description = 'Verify and validate HTML'
+}
