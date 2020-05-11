@@ -1,0 +1,55 @@
+image: library/gradle:jdk8-slim
+
+stages:
+  - build
+  - codequality
+  - test
+  - deploy
+
+build-jar:
+  stage: build
+  script: ./gradlew shadowJar
+  artifacts:
+    paths:
+      - build/libs/
+
+validate-html:
+  stage: build
+  script: ./gradlew validateHTML
+
+check-js:
+  stage: codequality
+  script: ./gradlew jshint
+
+check-main-code:
+  stage: codequality
+  script: ./gradlew checkQualityMain
+
+check-test-code:
+  stage: codequality
+  script: ./gradlew checkQualityTest
+
+test:
+  stage: test
+  script: ./gradlew test
+
+deploy:
+  image: debian:latest
+  stage: deploy
+  only:
+    - master
+  script:
+    - apt update -y && apt install -y software-properties-common rename
+    - cd build/libs/
+    - rename 's/.*\.jar$/tetris.jar/' *.jar
+    - 'which ssh-agent || apt install -y openssh-client cowsay'
+    - PATH="$PATH:/usr/games"
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan -H 172.18.18.200 >> ~/.ssh/known_hosts
+    - scp -q tetris.jar gitlab-runner@172.18.18.200:"/opt/group-${CI_PROJECT_NAME##*-}/tetris.jar"
+    - ssh gitlab-runner@172.18.18.200 sudo systemctl restart group-${CI_PROJECT_NAME##*-}
+    - systemctl -H gitlab-runner@172.18.18.200 status group-${CI_PROJECT_NAME##*-}
+  environment: production

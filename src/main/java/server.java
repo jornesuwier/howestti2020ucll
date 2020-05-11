@@ -12,7 +12,7 @@ public class server extends AbstractVerticle {
     }
 
     private void deploy(Vertx vertx) {
-        //vertx.deployVerticle(new JDBCInteractor());
+        vertx.deployVerticle(new JDBCInteractor());
         vertx.deployVerticle(new BusHandler());
         vertx.deployVerticle(new WebAPI());
     }

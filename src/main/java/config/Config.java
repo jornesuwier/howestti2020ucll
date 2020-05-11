@@ -9,6 +9,7 @@ public final class Config {
     public static final int WEB_PORT = 8025;
     public static final String STATIC_ENDPOINT = "/*";
     public static final String DB_PORT = "9024";
+    public static final int TIME_QUESTION = 10000;
 
     private Config() {
     }

@@ -13,9 +13,9 @@ public class Question {
         this.correctAnswer = correct;
     }
 
-    public String getQuestion() {return question;}
+    String getQuestion() {return question;}
 
-    public List<String> getAnswers() {return answers;}
+    List<String> getAnswers() {return answers;}
 
     boolean isCorrect(String answer){
         return answer.equals(answers.get(correctAnswer));

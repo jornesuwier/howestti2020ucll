@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>UCLL Quiz - Play</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/game.css">
+</head>
+<body>
+<main class="container">
+    <div id="info">
+        <p>Players: <b id="players">0</b></p>
+        <p>Score: <b id="score">0</b></p>
+        <p>Remaining Time: <b id="time">0</b></p>
+    </div>
+    <div id="game" class="justify-center flex-column">
+        <h2 id="question"></h2>
+        <div id="answers"></div>
+        <a class="btn" id="start">Start Quiz</a>
+    </div>
+</main>
+<script src="assets/js/sockjs.js"></script>
+<script src="assets/js/eventbus.js"></script>
+<script src="assets/js/game.js"></script>
+</body>
+</html>

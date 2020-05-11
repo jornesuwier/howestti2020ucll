@@ -14,10 +14,11 @@ public class Quiz {
     private List<Question> questions;
     private int activequestion = 0;
     private EventBus bus;
-    private MySqlQuizRepo db = MySqlQuizRepo.getInstance();
     private Vertx vertx;
+    private int remaining;
 
     public Quiz(EventBus bus, Vertx vertx) {
+        MySqlQuizRepo db = MySqlQuizRepo.getInstance();
         questions = db.getQuestions();
         this.vertx = vertx;
         this.bus = bus;
@@ -27,23 +28,18 @@ public class Quiz {
         sendNextQuestion();
     }
 
-    public void addPlayer(Player p){players.add(p);}
+    public void addPlayer(Player p){players.add(p);sendPlayerAmount();}
 
     public void checkAnswer(String player,JsonObject content){
         Player p = getPlayerByName(player);
         int questionId = content.getInteger("questionId");
         String answer = content.getString("answer");
         if(p!= null &&questions.get(questionId).isCorrect(answer)){
-            p.addScore(50); //TODO timed score
-            JsonObject o = new JsonObject();
-            o.put("type","Score");
-            o.put("user",p.getName());
-            o.put("score",p.getScore());
-            putOnBus(o);
+            p.addScore(remaining*50);
         }
     }
 
-    public void sendNextQuestion(){
+    private void sendNextQuestion(){
         JsonObject o = new JsonObject();
         if(activequestion < questions.size()) {
             o.put("type", "Question");
@@ -52,17 +48,25 @@ public class Quiz {
             o.put("answers", questions.get(activequestion).getAnswers());
             putOnBus(o);
             activequestion++;
-            int time = 10000;
-            for(int i=1;i<time;i+=1000){
+            remaining = Config.TIME_QUESTION;
+            for(int i = 1; i<Config.TIME_QUESTION; i+=1000){
                 int finalI = i;
                 vertx.setTimer(i, l -> {
+                    remaining = (Config.TIME_QUESTION - finalI)/1000;
                     JsonObject timeO = new JsonObject();
                     timeO.put("type", "Time");
-                    timeO.put("time",(time- finalI)/1000);
+                    timeO.put("time",remaining);
                     putOnBus(timeO);
                 });
             }
             vertx.setTimer(10000, l -> {
+                for (Player p : players) {
+                    JsonObject score = new JsonObject();
+                    score.put("type", "Score");
+                    score.put("user", p.getName());
+                    score.put("score", p.getScore());
+                    putOnBus(score);
+                }
                 sendNextQuestion();
             });
         }else {
@@ -71,18 +75,33 @@ public class Quiz {
         }
     }
 
+
     private Player getPlayerByName(String name){
         for (Player player : players) {
             if (player.getName().equals(name)) {return player;}
         }
         return null;
     }
+
+    private void sendPlayerAmount(){
+        JsonObject o = new JsonObject();
+        o.put("type", "Players");
+        o.put("players",players.size());
+        putOnBus(o);
+    }
+
+    public void reset(){
+        MySqlQuizRepo db = MySqlQuizRepo.getInstance();
+        questions = db.getQuestions();
+        players = new ArrayList<>();
+        activequestion = 0;
+    }
+
     private void putOnBus(JsonObject data) {
         try {
             bus.publish(Config.HANDLER_URL, data);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
     }
 }

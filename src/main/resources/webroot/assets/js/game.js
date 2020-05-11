@@ -1,0 +1,103 @@
+"use strict";
+/* global EventBus, document, console, messagelist */
+document.addEventListener("DOMContentLoaded", init);
+
+let eb = null;
+let name = localStorage.getItem("name");
+let QuestionId;
+
+function init() {
+    eb = new EventBus("http://" + window.location.host + "/socket/");
+    eb.onopen = function () {onOpen();};
+    setTimeout(function () {
+        sendtoBus("Connect",JSON.parse("{\"message\":\"hello\"}"));
+        document.querySelector("#start").addEventListener("click",start)
+    }, 1000);
+}
+
+function start(e) {
+    e.preventDefault();
+    sendtoBus("Start",JSON.parse("{\"message\":\"hello\"}"));
+}
+
+function answer(e) {
+    e.preventDefault();
+    e.currentTarget.classList.add("selected");
+    document.querySelectorAll(".choice-container").forEach(button => button.removeEventListener("click",answer));
+    sendtoBus("Answer",JSON.parse("{\"answer\":\""+e.currentTarget.children[1].innerHTML+"\",\"questionId\":"+QuestionId+"}"));
+}
+
+function displayQuestion(json){
+    document.querySelector("#question").innerHTML = json.question;
+    const answers = json.answers;
+    QuestionId = json.questionId;
+    document.querySelector("#answers").innerHTML = "";
+    for(let i=0;i<answers.length;i++){
+        document.querySelector("#answers").innerHTML += '<div class="choice-container"><p class="choice-prefix">'+(i+10).toString(36).toUpperCase()+'</p><p class="choice-text">'+answers[i]+'</p></div>';
+    }
+    document.querySelectorAll(".choice-container").forEach(button => button.addEventListener("click",answer))
+}
+
+
+function sendtoBus(type,content) {
+    eb.publish("socket.handler",
+        {user: name, type: type, content: content},
+        function (err) {
+            if (err) {
+                console.log("err: " + JSON.stringify(err))
+            }
+        }
+    );
+}
+
+function onOpen() {
+    eb.registerHandler("socket.handler",
+        function (error, message) {
+            if (error) {
+                console.log("error: " + JSON.stringify(error));
+            } else {
+                const data = message.body;
+				const type = data.type;
+				switch(type){
+                    case "Question":
+                        displayQuestion(data);
+                        removeStartButton();
+                        break;
+                    case "Score":
+                        if(data.user === name){
+                            document.querySelector("#score").innerHTML = data.score;
+                        }
+                        removeStartButton();
+                        break;
+                    case "Time":
+                        document.querySelector("#time").innerHTML = data.time;
+                        removeStartButton();
+                        break;
+                    case "Players":
+                        document.querySelector("#players").innerHTML = data.players;
+                        break;
+                    case "Start":
+                        removeStartButton();
+                        break;
+                    case "End":
+                        document.querySelector("#question").innerHTML = "Quiz Ended";
+                        document.querySelector("#answers").innerHTML = "";
+                        setTimeout(function () {
+                            window.location.href = "/";
+                        },5000);
+                        removeStartButton();
+                        break;
+					default:
+						break;
+				}
+            }
+        }
+    );
+}
+
+function removeStartButton() {
+    const btn = document.querySelector("#start");
+    if(btn !== null) {
+        document.querySelector("#game").removeChild(btn);
+    }
+}

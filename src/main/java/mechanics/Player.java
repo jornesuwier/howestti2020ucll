@@ -9,8 +9,8 @@ public class Player {
         this.score = 0;
     }
 
-    public String getName() {return name;}
-    public int getScore() {return score;}
+    String getName() {return name;}
+    int getScore() {return score;}
 
-    public void addScore(int amount){score += amount;}
+    void addScore(int amount){score += amount;}
 }

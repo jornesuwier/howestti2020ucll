@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/quiz.quiz.main.iml" filepath="$PROJECT_DIR$/.idea/modules/quiz.quiz.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/quiz.quiz.test.iml" filepath="$PROJECT_DIR$/.idea/modules/quiz.quiz.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/be.howest.ti.quiz.iml" filepath="$PROJECT_DIR$/.idea/modules/be.howest.ti.quiz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/be.howest.ti.quiz.main.iml" filepath="$PROJECT_DIR$/.idea/modules/be.howest.ti.quiz.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/be.howest.ti.quiz.test.iml" filepath="$PROJECT_DIR$/.idea/modules/be.howest.ti.quiz.test.iml" />
     </modules>
   </component>
 </project>

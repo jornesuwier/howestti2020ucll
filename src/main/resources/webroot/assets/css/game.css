@@ -1,0 +1,45 @@
+.choice-container, #info {
+    display: flex;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    font-size: 1.8rem;
+    border: 0.1rem solid rgb(86, 165, 235);
+    background-color: white;
+}
+
+.choice-container:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+}
+
+div#info{
+    flex-flow: column nowrap;
+    width: auto;
+    position: absolute;
+    right: 2vw;
+    top: 2vh;
+}
+
+div#info p{
+     padding: 1rem 1rem 0;
+ }
+div#info p:last-of-type{
+    padding: 0 1rem 1rem;
+}
+
+.choice-prefix {
+    padding: 1.5rem 2.5rem;
+    background-color: #56a5eb;
+    color: white;
+}
+
+.choice-text {
+    padding: 1.5rem;
+}
+.selected {
+    background-color: #56a5eb;
+}
+.selected .choice-text {color: white}
+#start{margin: auto}
