@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", init);
 let eb = null;
 let name = localStorage.getItem("name");
 let QuestionId;
+window.list =[];
 
 function init() {
     eb = new EventBus("http://" + window.location.host + "/socket/");
@@ -66,6 +67,8 @@ function onOpen() {
                     case "Score":
                         if(data.user === name){
                             document.querySelector("#score").innerHTML = data.score;
+                            list.push(data.user);
+                            list.push(data.score);
                         }
                         removeStartButton();
                         break;
@@ -80,12 +83,12 @@ function onOpen() {
                         removeStartButton();
                         break;
                     case "End":
-                        document.querySelector("#question").innerHTML = "Quiz Ended";
+                        document.querySelector("#endscore").innerHTML = "Congrats you scored: "+ list.slice(-1)[0];
                         document.querySelector("#answers").innerHTML = "";
-                        setTimeout(function () {
-                            window.location.href = "/";
-                        },5000);
+                        document.querySelector("#question").innerHTML = "";
                         removeStartButton();
+                        addEndButton();
+                        document.querySelector("#end").addEventListener("click", goToStart);
                         break;
 					default:
 						break;
@@ -101,3 +104,12 @@ function removeStartButton() {
         document.querySelector("#game").removeChild(btn);
     }
 }
+
+function addEndButton(){
+    document.querySelector("#end").removeAttribute("hidden");
+}
+
+function goToStart(){
+    window.location.href = "/"
+}
+
