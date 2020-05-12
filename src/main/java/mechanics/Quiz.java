@@ -104,4 +104,9 @@ public class Quiz {
             ex.printStackTrace();
         }
     }
+
+    public void addQuestion(String question, String anwsers, int correct) {
+        MySqlQuizRepo db = MySqlQuizRepo.getInstance();
+        db.addQuestions(question,anwsers,correct);
+    }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module external.linked.project.id="quiz:main" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="be.howest.ti" external.system.module.type="sourceSet" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
-    <output url="file://$MODULE_DIR$/../../out/production/classes" />
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/../../build/classes/java/main" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../src/main/java" isTestSource="false" />
@@ -10,30 +10,30 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: io.vertx:vertx-web:3.5.4" level="project" />
-    <orderEntry type="library" name="Gradle: io.vertx:vertx-auth-common:3.5.4" level="project" />
     <orderEntry type="library" name="Gradle: io.vertx:vertx-core:3.5.4" level="project" />
     <orderEntry type="library" name="Gradle: io.vertx:vertx-jdbc-client:3.5.4" level="project" />
     <orderEntry type="library" name="Gradle: com.h2database:h2:1.4.197" level="project" />
     <orderEntry type="library" name="Gradle: com.zaxxer:HikariCP:3.2.0" level="project" />
     <orderEntry type="library" name="Gradle: org.tinylog:tinylog:1.3.5" level="project" />
+    <orderEntry type="library" name="Gradle: io.vertx:vertx-auth-common:3.5.4" level="project" />
+    <orderEntry type="library" name="Gradle: io.vertx:vertx-bridge-common:3.5.4" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-codec-http2:4.1.19.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-handler:4.1.19.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-handler-proxy:4.1.19.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-resolver-dns:4.1.19.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-codec-http:4.1.19.Final" level="project" />
-    <orderEntry type="library" name="Gradle: io.netty:netty-codec-socks:4.1.19.Final" level="project" />
-    <orderEntry type="library" name="Gradle: io.netty:netty-codec-dns:4.1.19.Final" level="project" />
-    <orderEntry type="library" name="Gradle: io.netty:netty-codec:4.1.19.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-transport:4.1.19.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-buffer:4.1.19.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-resolver:4.1.19.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-common:4.1.19.Final" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.9.6" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.9.6" level="project" />
-    <orderEntry type="library" name="Gradle: io.vertx:vertx-bridge-common:3.5.4" level="project" />
     <orderEntry type="library" name="Gradle: io.vertx:vertx-sql-common:3.5.4" level="project" />
     <orderEntry type="library" name="Gradle: com.mchange:c3p0:0.9.5.2" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec:4.1.19.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec-socks:4.1.19.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec-dns:4.1.19.Final" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
     <orderEntry type="library" name="Gradle: com.mchange:mchange-commons-java:0.2.11" level="project" />
   </component>

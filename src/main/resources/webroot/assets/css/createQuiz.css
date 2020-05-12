@@ -1,0 +1,19 @@
+.container {
+    width: 95vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+input{
+    width: 100%;
+}
+
+#submit:hover{
+    background-color: #56a5eb;
+    color: #ecf5ff;
+    cursor: pointer;
+}

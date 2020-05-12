@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>UCLL Quiz - Play</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/createQuiz.css">
+</head>
+<body>
+<main class="container">
+    <form action="#">
+        <label for="question">question:</label><br>
+        <input type="text" id="question" name="question"><br>
+        <label for="answers">answers (seperated by a comma):</label><br>
+        <input type="text" id="answers" name="answers"><br>
+        <label for="solution">solution (numeric value of the solution):</label><br>
+        <input type="text" id="solution" name="solution"><br>
+        <input type="submit" id="submit" value="addQuestion">
+    </form>
+</main>
+<script src="assets/js/sockjs.js"></script>
+<script src="assets/js/eventbus.js"></script>
+<script src="assets/js/createQuiz.js"></script>
+</body>
+</html>
