@@ -12,13 +12,13 @@
 </head>
 <body>
 <main class="container">
-    <form action="#">
+    <form name="createQuiz" action="#" onsubmit="return validateForm(this);">
         <label for="question">question:</label><br>
-        <input type="text" id="question" name="question"><br>
-        <label for="answers">answers (seperated by a comma):</label><br>
-        <input type="text" id="answers" name="answers"><br>
-        <label for="solution">solution (numeric value of the solution):</label><br>
-        <input type="text" id="solution" name="solution"><br>
+        <input type="text" id="question" name="question" required><br>
+        <label for="answers">answers (separated by a comma ex. answer1,answer2,...):</label><br>
+        <input type="text" id="answers" name="answers" required><br>
+        <label for="solution">solution (numeric value of the solution starting with 0):</label><br>
+        <input type="number" id="solution" name="solution" min="0" max="99" required><br>
         <input type="submit" id="submit" value="addQuestion">
     </form>
 </main>

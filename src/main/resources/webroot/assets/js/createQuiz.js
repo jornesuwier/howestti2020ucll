@@ -20,7 +20,7 @@ function addQuestion(e) {
     sendtoBus("Question",JSON.parse("{\"question\":\""+question+"\",\"answers\":\""+answers+"\",\"correct\":"+solution+"}"));
 
 }
-function sendtoBus(type,content) {
+function sendtoBus(type, content) {
     eb.publish("socket.handler",
         {user: name, type: type, content: content},
         function (err) {
@@ -29,4 +29,12 @@ function sendtoBus(type,content) {
             }
         }
     );
+}
+
+function validateForm() {
+    let x = document.forms["createQuiz"]["answers"].value;
+    if (!(x.indexOf(',') > -1)) {
+        alert("You need to provide more then one possible answer & answers must be separated by a comma");
+        return false;
+    }
 }
