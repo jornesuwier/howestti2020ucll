@@ -120,4 +120,10 @@ public class Quiz {
     public int getUGID() {
         return UGID;
     }
+  
+    public void addQuestion(String question, String anwsers, int correct) {
+        MySqlQuizRepo db = MySqlQuizRepo.getInstance();
+        db.addQuestions(question,anwsers,correct);
+
+    }
 }

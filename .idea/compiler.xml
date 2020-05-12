@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel>
-      <module name="be.howest.ti.quiz.main" target="1.8" />
-      <module name="be.howest.ti.quiz.test" target="1.8" />
+    <bytecodeTargetLevel target="1.8">
       <module name="be.howest.ti.tetris.main" target="1.8" />
       <module name="be.howest.ti.tetris.test" target="1.8" />
       <module name="tetris_main" target="1.8" />

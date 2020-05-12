@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>UCLL Quiz - Play</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/index.css">
     <link rel="stylesheet" type="text/css" href="assets/css/game.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta name="author" content="HowestTI2020UCLL"/>
 </head>
 <body>
 <main class="container">
@@ -18,7 +20,9 @@
     <div id="game" class="justify-center flex-column">
         <h2 id="question"></h2>
         <div id="answers"></div>
+        <h2 id="endscore"></h2>
         <a class="btn" id="start">Start Quiz</a>
+        <a class="btn" id="end" hidden>Return to start</a>
     </div>
 </main>
 <script src="assets/js/sockjs.js"></script>

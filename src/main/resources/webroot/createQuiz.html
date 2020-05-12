@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>UCLL Quiz - Play</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/createQuiz.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta name="author" content="HowestTI2020UCLL"/>
+</head>
+<body>
+<main class="container">
+    <form name="createQuiz" action="#" onsubmit="return validateForm(this);">
+        <label for="question">question:</label><br>
+        <input type="text" id="question" name="question" required><br>
+        <label for="answers">answers (separated by a comma ex. answer1,answer2,...):</label><br>
+        <input type="text" id="answers" name="answers" required><br>
+        <label for="solution">solution (numeric value of the solution starting with 0):</label><br>
+        <input type="number" id="solution" name="solution" min="0" max="99" required><br>
+        <input type="submit" id="submit" value="addQuestion">
+    </form>
+</main>
+<script src="assets/js/sockjs.js"></script>
+<script src="assets/js/eventbus.js"></script>
+<script src="assets/js/createQuiz.js"></script>
+</body>
+</html>
