@@ -8,6 +8,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MySqlQuizRepo {
+    /*
+  CREATE TABLE `questions` (
+  `QUESTIONID` INT NOT NULL AUTO_INCREMENT,
+  `QUESTION` VARCHAR(255) NULL,
+  `ANSWERS` VARCHAR(500) NULL,
+  `CORRECT` INTEGER(10) NULL,
+  PRIMARY KEY (`QUESTIONID`));
+*/
     private static String url = "jdbc:h2:~/quiz";
     private static String sqlUser = "sa";
     private static String sqlPass = "";
@@ -31,5 +39,18 @@ public class MySqlQuizRepo {
             }
         } catch (SQLException ex) {ex.printStackTrace();}
         return null;
+    }
+
+    public boolean addQuestions(String question, String answers, int correct) {
+        try (Connection con = DriverManager.getConnection(url, sqlUser, sqlPass)) {
+            try (PreparedStatement st = con.prepareStatement("INSERT INTO questions(question,answers,correct) VALUES (?,?,?)")) {
+                st.setString(1,question);
+                st.setString(2,answers);
+                st.setInt(3,correct);
+                st.executeUpdate();
+                con.commit();
+            }
+        } catch (SQLException ex) {ex.printStackTrace();}
+        return true;
     }
 }

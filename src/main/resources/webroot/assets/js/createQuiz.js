@@ -16,8 +16,8 @@ function addQuestion(e) {
     let question = document.querySelector("#question").value;
     let answers = document.querySelector("#answers").value;
     let solution = document.querySelector("#solution").value;
-    console.log(JSON.parse("{\"question\":\""+question+"\",\"answers\":\""+answers+"\",\"solution\":\""+solution+"\"}"))
-    sendtoBus("Question",JSON.parse("{\"question\":\""+question+"\",\"answers\":\""+answers+"\",\"solution\":\""+solution+"\"}"));
+    console.log(JSON.parse("{\"question\":\""+question+"\",\"answers\":\""+answers+"\",\"correct\":"+solution+"}"))
+    sendtoBus("Question",JSON.parse("{\"question\":\""+question+"\",\"answers\":\""+answers+"\",\"correct\":"+solution+"}"));
 
 }
 function sendtoBus(type,content) {
