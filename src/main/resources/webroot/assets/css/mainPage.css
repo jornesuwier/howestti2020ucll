@@ -1,0 +1,89 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:500);
+@import url(https://fonts.googleapis.com/css?family=Teko:700);
+
+html, body {
+    height: 100%;
+    margin: 0;
+    background: #212121;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    font-family: 'Raleway', Arial, sans-serif;
+    position: relative;
+    display: inline-block;
+    color: #bdbdbd;
+    margin: 60px 20px;
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    font-size: 64px;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+h1 {
+    font-family: 'Teko', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 108px;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 15px;
+    line-height: 27px;
+    text-transform: uppercase;
+}
+
+h6 {
+    font-size: 40px;
+    margin: 0;
+    display: inline-block;
+    position: relative;
+    text-transform: uppercase;
+}
+
+h6:before,
+h6:after {
+    position: absolute;
+    height: 4px;
+    content: '';
+    width: 30px;
+    top: 50%;
+    border-top: 2px solid #bdbdbd;
+    border-bottom: 2px solid #bdbdbd;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+h6:before {
+    left: -35px;
+}
+
+h6:after {
+    right: -35px;
+}
+
+/* BUTTONS */
+.btn, input {
+    font-size: 1.8rem;
+    padding: 1rem 0;
+    width: 20rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: #bdbdbd;
+    background-color: #212121;
+}
+
+.btn:hover {
+    cursor: pointer;
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+    color: #212121;
+    background-color: #bdbdbd;
+}
