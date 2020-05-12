@@ -17,7 +17,6 @@ public class Quiz {
     private EventBus bus;
     private Vertx vertx;
     private int remaining;
-    private int maxPlayers = 20;
     private State stateOfTheGame;
 
     public Quiz(EventBus bus, Vertx vertx, int UGID) {
@@ -120,9 +119,5 @@ public class Quiz {
 
     public int getUGID() {
         return UGID;
-    }
-
-    public boolean maxPlayersReached(){
-        return players.size() == 20;
     }
 }

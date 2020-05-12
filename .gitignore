@@ -133,3 +133,13 @@ gradle-app.setting
 
 
 # End of https://www.gitignore.io/api/java,vertx,gradle,java-web,intellij
+/.idea/workspace.xml
+/.idea/uiDesigner.xml
+/.idea/modules.xml
+/.idea/misc.xml
+/.idea/jarRepositories.xml
+/.idea/gradle.xml
+/.idea/encodings.xml
+/.idea/compiler.xml
+/.idea/modules/
+/.idea/

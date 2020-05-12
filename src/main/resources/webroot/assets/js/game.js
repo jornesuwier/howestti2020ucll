@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", init);
 
 let eb = null;
 let name = localStorage.getItem("name");
+let GID = 0;
 let QuestionId;
 
 function init() {
@@ -41,7 +42,7 @@ function displayQuestion(json){
 
 function sendtoBus(type,content) {
     eb.publish("socket.handler",
-        {user: name, type: type, content: content},
+        {gid: GID ,user: name, type: type, content: content},
         function (err) {
             if (err) {
                 console.log("err: " + JSON.stringify(err))
