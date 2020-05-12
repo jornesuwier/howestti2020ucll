@@ -3,8 +3,8 @@
     margin-bottom: 0.5rem;
     width: 100%;
     font-size: 1.8rem;
-    border: 0.1rem solid rgb(86, 165, 235);
-    background-color: white;
+    border: 0.1rem solid #bdbdbd;
+    color: #bdbdbd;
 }
 
 .choice-container:hover {
@@ -43,3 +43,59 @@ div#info p:last-of-type{
 }
 .selected .choice-text {color: white}
 #start{margin: auto}
+
+body{
+    background-color: #212121;
+    color: #bdbdbd;
+    font-family: 'Teko', Arial, sans-serif;
+}
+.btn, input {
+    font-size: 3rem;
+    padding: 1rem 1rem;
+    width: 40rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0 !important;
+    text-decoration: none;
+    color: #bdbdbd;
+    background-color: #212121;
+
+}
+
+.btn:hover {
+    cursor: pointer;
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+    color: #212121;
+    background-color: #bdbdbd;
+}
+div#join,div#create{
+    margin-left: auto;
+    margin-right: auto;
+    width: 40rem;
+}
+div#join>*,div#create>*{
+    font-size: 3rem;
+    padding: 1rem 1rem;
+    width: 40rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: #bdbdbd;
+    background-color: #404040;
+
+}
+
+input[type=submit]:hover{
+    cursor: pointer;
+}
+input{
+    border:0;
+}
+
+hr{
+    margin: 5vh;
+}

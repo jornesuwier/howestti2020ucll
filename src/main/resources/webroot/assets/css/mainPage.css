@@ -71,7 +71,7 @@ h6:after {
 /* BUTTONS */
 .btn, input {
     font-size: 1.8rem;
-    padding: 1rem 0;
+    padding: 1rem 1rem;
     width: 20rem;
     text-align: center;
     margin-bottom: 1rem;
