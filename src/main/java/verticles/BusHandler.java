@@ -36,6 +36,9 @@ public class BusHandler extends AbstractVerticle {
             case "End":
                 quiz.reset();
                 break;
+            case "Question":
+                //quiz.addQuestion();
+                logger.info("new question added:" + content);
             default:
                 logger.info(data.toString());
         }
