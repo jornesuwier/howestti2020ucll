@@ -135,18 +135,13 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
+
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1bnTpEiB7qxIQ4kOzfTOXyuBuZp" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
+
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -377,10 +372,7 @@
       <workItem from="1588330862781" duration="486000" />
       <workItem from="1588331468027" duration="58000" />
       <workItem from="1589187095361" duration="3061000" />
-      <workItem from="1589267040297" duration="94000" />
-    </task>
-    <servers />
-  </component>
+
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
@@ -390,6 +382,22 @@
         <entry key="MAIN">
           <value>
             <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
           </value>
         </entry>
       </map>
@@ -412,6 +420,7 @@
       </breakpoints>
     </breakpoint-manager>
   </component>
+
   <component name="masterDetails">
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
