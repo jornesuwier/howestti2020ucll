@@ -10,16 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Quiz {
-    private int UGID;
+    private String UGID;
     private List<Player> players = new ArrayList<>();
     private List<Question> questions;
     private int activequestion = 0;
     private EventBus bus;
     private Vertx vertx;
     private int remaining;
-    private State stateOfTheGame;
 
-    public Quiz(EventBus bus, Vertx vertx, int UGID) {
+    public Quiz(EventBus bus, Vertx vertx, String UGID) {
         MySqlQuizRepo db = MySqlQuizRepo.getInstance();
         questions = db.getQuestions();
         this.vertx = vertx;
@@ -107,18 +106,6 @@ public class Quiz {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
-
-    public State getStateOfTheGame() {
-        return stateOfTheGame;
-    }
-
-    public void setStateOfTheGame(State stateOfTheGame) {
-        this.stateOfTheGame = stateOfTheGame;
-    }
-
-    public int getUGID() {
-        return UGID;
     }
   
     public void addQuestion(String question, String anwsers, int correct) {

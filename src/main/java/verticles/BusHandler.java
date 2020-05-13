@@ -8,31 +8,30 @@ import io.vertx.core.json.JsonObject;
 import mechanics.Player;
 import mechanics.Quiz;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 public class BusHandler extends AbstractVerticle {
     private EventBus bus;
     private Logger logger = Logger.getLogger(this.getClass().getName());
-    private List<Quiz> quizzes = new ArrayList<>();
+    private Map<String, Quiz> quizzes = new HashMap<>();
 
     private void handle(final Message message) {
         JsonObject data = (JsonObject) message.body();
         JsonObject content = data.getJsonObject("content");
         String type = data.getString("type");
         String user = data.getString("user");
-        int GID = (data.getInteger("GID") == null) ? 0 : data.getInteger("GID");
+        String GID = (data.getString("GID") == null) ? "0" : data.getString("GID");
         logger.info(GID + " this is the session we looking for");
         switch (type) {
             case "Create":
-                    GID = quizzes.size()-1;
-                    quizzes.add(new Quiz(vertx.eventBus(), vertx, GID));
+                    quizzes.put(GID,new Quiz(vertx.eventBus(), vertx, GID));
                     JsonObject object = new JsonObject()
                     .put("type", "loginReply").put("user",user).put("GID",GID);
                     bus.publish(Config.HANDLER_URL, object);
                     logger.info(user + " created room: " + GID);
-
+                    quizzes.get(GID).addPlayer(new Player(user));
                 break;
             case "Join":
                 quizzes.get(GID).addPlayer(new Player(user));
