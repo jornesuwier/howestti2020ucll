@@ -50,6 +50,7 @@ body{
     font-family: 'Teko', Arial, sans-serif;
 }
 .btn, input {
+    display: inline-block;
     font-size: 3rem;
     padding: 1rem 1rem;
     width: 40rem;
@@ -75,6 +76,11 @@ div#join,div#create{
     margin-right: auto;
     width: 40rem;
 }
+#roomConfig{
+    width: 40rem;
+    justify-content: center;
+    justify-items: center;
+}
 div#join>*,div#create>*{
     font-size: 3rem;
     padding: 1rem 1rem;
@@ -99,3 +105,10 @@ input{
 hr{
     margin: 5vh;
 }
+#startQuiz{
+    color: white;
+    text-decoration: white;
+    text-decoration-style: wavy;
+    cursor: pointer;
+}
+

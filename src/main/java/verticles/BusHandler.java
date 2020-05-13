@@ -23,18 +23,21 @@ public class BusHandler extends AbstractVerticle {
         String type = data.getString("type");
         String user = data.getString("user");
         int GID = (data.getInteger("GID") == null) ? 0 : data.getInteger("GID");
-        logger.info(GID + "this is teh session we looking for");
+        logger.info(GID + " this is the session we looking for");
         switch (type) {
             case "Create":
                     GID = quizzes.size()-1;
                     quizzes.add(new Quiz(vertx.eventBus(), vertx, GID));
                     JsonObject object = new JsonObject()
-                    .put("user",user).put("GID",GID);
+                    .put("type", "loginReply").put("user",user).put("GID",GID);
                     bus.publish(Config.HANDLER_URL, object);
+                    logger.info(user + " created room: " + GID);
+
                 break;
-            case "Connect":
+            case "Join":
                 quizzes.get(GID).addPlayer(new Player(user));
-                logger.info(user + " Connected to the EB");
+                logger.info(user + " joined room: " + GID);
+
                 break;
             case "Start":
                 quizzes.get(GID).start();
