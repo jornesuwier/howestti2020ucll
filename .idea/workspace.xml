@@ -19,22 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86e8bcc9-56ac-4f7a-b749-6d50eefeea5d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/webroot/assets/css/createQuiz.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/webroot/assets/js/createQuiz.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/webroot/createQuiz.html" afterDir="false" />
+    <list default="true" id="86e8bcc9-56ac-4f7a-b749-6d50eefeea5d" name="Default Changelist" comment="Added DB connection to add questions">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/be.howest.ti.quiz.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/be.howest.ti.quiz.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/be.howest.ti.quiz.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/be.howest.ti.quiz.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/verticles/BusHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/verticles/BusHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +130,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="add-questions-page-+-server-side" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -377,8 +370,44 @@
       <workItem from="1588330862781" duration="486000" />
       <workItem from="1588331468027" duration="58000" />
       <workItem from="1589187095361" duration="3061000" />
-      <workItem from="1589267040297" duration="94000" />
+      <workItem from="1589267040297" duration="7355000" />
     </task>
+    <task id="LOCAL-00001" summary="Added new HTMl createquiz file (incl js and css)&#10;New questions get loggen on server">
+      <created>1589267268666</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589267268666</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added DB connection to add questions">
+      <created>1589269728759</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1589269728759</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added base css and html&#10;no js functionality">
+      <created>1589289093471</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589289093471</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added base css and html&#10;no js functionality&#10;update gitignore">
+      <created>1589358350386</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1589358350386</updated>
+    </task>
+    <task id="LOCAL-00005" summary="&#10;update gitignore">
+      <created>1589358481925</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1589358481925</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,6 +428,54 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+    <MESSAGE value="Added new HTMl createquiz file (incl js and css)&#10;New questions get loggen on server" />
+    <MESSAGE value="Added DB connection to add questions" />
+    <MESSAGE value="added base css and html&#10;no js functionality" />
+    <MESSAGE value="added base css and html&#10;no js functionality&#10;update gitignore" />
+    <MESSAGE value="&#10;update gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;update gitignore" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="708" y="326" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589358190187">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="708" y="326" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1589358190187" />
+    <state x="184" y="86" key="DiffContextDialog" timestamp="1589358446372">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="184" y="86" key="DiffContextDialog/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1589358446372" />
+    <state width="1877" height="314" key="GridCell.Tab.0.bottom" timestamp="1589286958511">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="314" key="GridCell.Tab.0.bottom/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1589286958511" />
+    <state width="1877" height="314" key="GridCell.Tab.0.center" timestamp="1589286958511">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="314" key="GridCell.Tab.0.center/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1589286958511" />
+    <state width="1877" height="314" key="GridCell.Tab.0.left" timestamp="1589286958511">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="314" key="GridCell.Tab.0.left/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1589286958511" />
+    <state width="1877" height="314" key="GridCell.Tab.0.right" timestamp="1589286958511">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="314" key="GridCell.Tab.0.right/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1589286958511" />
+    <state x="708" y="227" key="RollbackChangesDialog" timestamp="1589358290479">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="708" y="227" key="RollbackChangesDialog/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1589358290479" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1589289101038">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1589289101038" />
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589358362512">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1589358362512" />
+    <state x="661" y="313" key="git4idea.merge.GitPullDialog" timestamp="1589358371788">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="661" y="313" key="git4idea.merge.GitPullDialog/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1589358371788" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
