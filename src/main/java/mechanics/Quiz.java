@@ -113,4 +113,14 @@ public class Quiz {
         db.addQuestions(question,anwsers,correct);
 
     }
+
+    public void getScoreBoard(){
+        JsonObject scoreboard = new JsonObject();
+        for(Player p: players){
+            scoreboard.put("type", "Scoreboard");
+            scoreboard.put("user", p.getScore());
+            scoreboard.put("score", p.getScore());
+        }
+        putOnBus(scoreboard);
+    }
 }
