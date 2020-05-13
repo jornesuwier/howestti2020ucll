@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", init);
 
 let eb = null;
 let name = localStorage.getItem("name");
-let GID = 0;
+let GID = localStorage.getItem("GID");
 let QuestionId;
 window.list =[];
 
@@ -20,7 +20,10 @@ function init() {
 
 function createRoom(e) {
     e.preventDefault();
-    sendtoBus("Create",JSON.parse("{\"message\":\"hello\"}"))
+    GID = createGID();
+    document.querySelector("#generatedCode").innerHTML = GID;
+    localStorage.setItem("GID", GID);
+    sendtoBus("Create",JSON.parse("{\"message\":\"hello\"}"));
     document.querySelector("#startQuiz").classList.remove("hidden");
     document.querySelector("#startQuiz").addEventListener("click",startQuiz);
     setTimeout(function () {
@@ -35,6 +38,7 @@ function startQuiz(e) {
 function  joinRoom(e) {
     e.preventDefault();
     GID = document.querySelector("#roomCode").value;
+    localStorage.setItem("GID", GID);
     sendtoBus("Join",JSON.parse("{\"message\":\"hello\"}"));
     document.querySelector("#gid").innerHTML = GID;
     document.querySelector("#player").innerHTML = name;
@@ -69,7 +73,7 @@ function displayQuestion(json){
 
 function sendtoBus(type,content) {
     eb.publish("socket.handler",
-        {gid: GID ,user: name, type: type, content: content},
+        {GID: GID ,user: name, type: type, content: content},
         function (err) {
             if (err) {
                 console.log("err: " + JSON.stringify(err))
@@ -148,3 +152,13 @@ function goToStart(){
     window.location.href = "/"
 }
 
+//unique identifier function
+function createGID(){
+    let dt = new Date().getTime();
+    let gid = 'xxxx-xxxx'.replace(/[xy]/g, function(c) {
+        let r = (dt + Math.random()*16)%16 | 0;
+        dt = Math.floor(dt/16);
+        return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+    });
+    return gid;
+}
