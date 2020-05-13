@@ -13,15 +13,41 @@ function init() {
     eb.onopen = function () {onOpen();};
     setTimeout(function () {
         sendtoBus("Connect",JSON.parse("{\"message\":\"hello\"}"));
-        document.querySelector("#start").addEventListener("click",start)
+        document.querySelector("#createRoom").addEventListener("click",createRoom);
+        document.querySelector("#joinRoomSubmit").addEventListener("click",joinRoom)
     }, 1000);
 }
 
-function start(e) {
+function createRoom(e) {
+    e.preventDefault();
+    sendtoBus("Create",JSON.parse("{\"message\":\"hello\"}"))
+    document.querySelector("#startQuiz").classList.remove("hidden");
+    document.querySelector("#startQuiz").addEventListener("click",startQuiz);
+    setTimeout(function () {
+        hideRooms();
+    },2000)
+
+}
+function startQuiz(e) {
     e.preventDefault();
     sendtoBus("Start",JSON.parse("{\"message\":\"hello\"}"));
 }
+function  joinRoom(e) {
+    e.preventDefault();
+    GID = document.querySelector("#roomCode").value;
+    sendtoBus("Join",JSON.parse("{\"message\":\"hello\"}"));
+    document.querySelector("#gid").innerHTML = GID;
+    document.querySelector("#player").innerHTML = name;
+    hideRooms();
 
+
+}
+
+function hideRooms() {
+    document.querySelector("#roomConfig").classList.add("hidden");
+
+
+}
 function answer(e) {
     e.preventDefault();
     e.currentTarget.classList.add("selected");
@@ -91,7 +117,15 @@ function onOpen() {
                         addEndButton();
                         document.querySelector("#end").addEventListener("click", goToStart);
                         break;
-					default:
+                    case "loginReply":
+                        console.log(type + "//  " + data);
+                        document.querySelector("#player").innerHTML = name;
+                        GID = data.GID;
+                        document.querySelector("#gid").innerHTML = GID;
+                        document.querySelector("#generatedCode").innerHTML = GID;
+
+                        break;
+                    default:
 						break;
 				}
             }
