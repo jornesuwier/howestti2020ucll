@@ -1,7 +1,7 @@
 package mechanics;
 
 public class Player {
-    private String name;
+    private final String name;
     private int score;
 
     public Player(String name) {
@@ -9,8 +9,15 @@ public class Player {
         this.score = 0;
     }
 
-    String getName() {return name;}
-    int getScore() {return score;}
+    String getName() {
+        return name;
+    }
 
-    void addScore(int amount){score += amount;}
+    int getScore() {
+        return score;
+    }
+
+    void addScore(int amount) {
+        score += amount;
+    }
 }

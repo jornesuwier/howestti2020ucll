@@ -14,7 +14,7 @@
     transition: transform 150ms;
 }
 
-div#info{
+div#info {
     flex-flow: column nowrap;
     width: auto;
     position: absolute;
@@ -22,10 +22,11 @@ div#info{
     top: 2vh;
 }
 
-div#info p{
-     padding: 1rem 1rem 0;
- }
-div#info p:last-of-type{
+div#info p {
+    padding: 1rem 1rem 0;
+}
+
+div#info p:last-of-type {
     padding: 0 1rem 1rem;
 }
 
@@ -38,17 +39,25 @@ div#info p:last-of-type{
 .choice-text {
     padding: 1.5rem;
 }
+
 .selected {
     background-color: #56a5eb;
 }
-.selected .choice-text {color: white}
-#start{margin: auto}
 
-body{
+.selected .choice-text {
+    color: white
+}
+
+#start {
+    margin: auto
+}
+
+body {
     background-color: #212121;
     color: #bdbdbd;
     font-family: 'Teko', Arial, sans-serif;
 }
+
 .btn, input {
     display: inline-block;
     font-size: 3rem;
@@ -71,17 +80,20 @@ body{
     color: #212121;
     background-color: #bdbdbd;
 }
-div#join,div#create{
+
+div#join, div#create {
     margin-left: auto;
     margin-right: auto;
     width: 40rem;
 }
-#roomConfig{
+
+#roomConfig {
     width: 40rem;
     justify-content: center;
     justify-items: center;
 }
-div#join>*,div#create>*{
+
+div#join > *, div#create > * {
     font-size: 3rem;
     padding: 1rem 1rem;
     width: 40rem;
@@ -95,28 +107,51 @@ div#join>*,div#create>*{
 
 }
 
-input[type=submit]:hover{
+input[type=submit]:hover {
     cursor: pointer;
 }
-input{
-    border:0;
+
+input {
+    border: 0;
 }
 
-hr{
+hr {
     margin: 5vh;
 }
-#startQuiz{
+
+#startQuiz {
     color: white;
     text-decoration: white;
     text-decoration-style: wavy;
     cursor: pointer;
 }
 
-#scoreboard li{
+#scoreboard li {
     padding: 2rem 10% 2rem 2%;
     width: 50%;
     font-weight: bold;
     font-size: 2rem;
     border: #bdbdbd 2px solid;
     display: inline-block;
+}
+
+#joinRoom, #createRoom {
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font: 4em "Oswald", sans-serif;
+    background: url(https://i.ibb.co/h889f1j/imgonline-com-ua-Replace-Color-G6n8-Q4r0-B9q-UY.png) repeat-y;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: wave 80s linear infinite;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+}
+
+@-webkit-keyframes wave {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
 }

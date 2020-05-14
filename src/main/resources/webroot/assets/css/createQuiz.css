@@ -8,11 +8,11 @@
     margin: 0 auto;
 }
 
-input{
+input {
     width: 100%;
 }
 
-#submit:hover{
+#submit:hover {
     background-color: #56a5eb;
     color: #ecf5ff;
     cursor: pointer;

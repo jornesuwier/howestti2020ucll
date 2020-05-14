@@ -107,7 +107,7 @@ SockJS = function () {
         this._listeners || (this._listeners = {}), a in this._listeners || (this._listeners[a] = []);
         var d = this._listeners[a];
         c.arrIndexOf(d, b) === -1 && d.push(b);
-        return
+
     }, d.prototype.removeEventListener = function (a, b) {
         if (!(this._listeners && a in this._listeners)) return;
         var d = this._listeners[a], e = c.arrIndexOf(d, b);
@@ -115,7 +115,7 @@ SockJS = function () {
             d.length > 1 ? this._listeners[a] = d.slice(0, e).concat(d.slice(e + 1)) : delete this._listeners[a];
             return
         }
-        return
+
     }, d.prototype.dispatchEvent = function (a) {
         var b = a.type, c = Array.prototype.slice.call(arguments, 0);
         this["on" + b] && this["on" + b].apply(this, c);
