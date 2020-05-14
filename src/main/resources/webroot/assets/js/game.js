@@ -38,14 +38,17 @@ function startQuiz(e) {
     sendtoBus("Start", JSON.parse("{\"message\":\"hello\"}"));
 }
 
-function joinRoom(e) {
+function  joinRoom(e) {
     e.preventDefault();
     GID = document.querySelector("#roomCode").value;
-    localStorage.setItem("GID", GID);
-    sendtoBus("Join", JSON.parse("{\"message\":\"hello\"}"));
-    document.querySelector("#gid").innerHTML = GID;
-    document.querySelector("#player").innerHTML = name;
-    hideRooms();
+    console.log("The GID is ,", GID);
+    if (GID !== ""){
+        localStorage.setItem("GID", GID);
+        sendtoBus("Join",JSON.parse("{\"message\":\"hello\"}"));
+        document.querySelector("#gid").innerHTML = GID;
+        document.querySelector("#player").innerHTML = name;
+        hideRooms();
+    }
 }
 
 function hideRooms() {
