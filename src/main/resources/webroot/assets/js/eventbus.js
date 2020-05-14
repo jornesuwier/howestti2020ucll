@@ -40,10 +40,10 @@
             }, s.sockJSConn.onmessage = function (e) {
                 var r = JSON.parse(e.data);
                 if (r.replyAddress && Object.defineProperty(r, "reply", {
-                        value: function (e, n, t) {
-                            s.send(r.replyAddress, e, n, t)
-                        }
-                    }), s.handlers[r.address]) for (var n = s.handlers[r.address], t = 0; t < n.length; t++) "err" === r.type ? n[t]({
+                    value: function (e, n, t) {
+                        s.send(r.replyAddress, e, n, t)
+                    }
+                }), s.handlers[r.address]) for (var n = s.handlers[r.address], t = 0; t < n.length; t++) "err" === r.type ? n[t]({
                     failureCode: r.failureCode,
                     failureType: r.failureType,
                     message: r.message
@@ -63,56 +63,56 @@
         t()
     };
     if (a.prototype.send = function (e, n, t, r) {
-            if (this.state != a.OPEN) throw new Error("INVALID_STATE_ERR");
-            "function" == typeof t && (r = t, t = {});
-            var o = {type: "send", address: e, headers: i(this.defaultHeaders, t), body: n};
-            if (r) {
-                var s = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (e, n) {
-                    return n = 16 * Math.random(), ("y" == e ? 3 & n | 8 : 0 | n).toString(16)
-                });
-                o.replyAddress = s, this.replyHandlers[s] = r
-            }
-            this.sockJSConn.send(JSON.stringify(o))
-        }, a.prototype.publish = function (e, n, t) {
-            if (this.state != a.OPEN) throw new Error("INVALID_STATE_ERR");
-            this.sockJSConn.send(JSON.stringify({
-                type: "publish",
-                address: e,
-                headers: i(this.defaultHeaders, t),
-                body: n
-            }))
-        }, a.prototype.registerHandler = function (e, n, t) {
-            if (this.state != a.OPEN) throw new Error("INVALID_STATE_ERR");
-            "function" == typeof n && (t = n, n = {}), this.handlers[e] || (this.handlers[e] = [], this.sockJSConn.send(JSON.stringify({
-                type: "register",
+        if (this.state != a.OPEN) throw new Error("INVALID_STATE_ERR");
+        "function" == typeof t && (r = t, t = {});
+        var o = {type: "send", address: e, headers: i(this.defaultHeaders, t), body: n};
+        if (r) {
+            var s = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (e, n) {
+                return n = 16 * Math.random(), ("y" == e ? 3 & n | 8 : 0 | n).toString(16)
+            });
+            o.replyAddress = s, this.replyHandlers[s] = r
+        }
+        this.sockJSConn.send(JSON.stringify(o))
+    }, a.prototype.publish = function (e, n, t) {
+        if (this.state != a.OPEN) throw new Error("INVALID_STATE_ERR");
+        this.sockJSConn.send(JSON.stringify({
+            type: "publish",
+            address: e,
+            headers: i(this.defaultHeaders, t),
+            body: n
+        }))
+    }, a.prototype.registerHandler = function (e, n, t) {
+        if (this.state != a.OPEN) throw new Error("INVALID_STATE_ERR");
+        "function" == typeof n && (t = n, n = {}), this.handlers[e] || (this.handlers[e] = [], this.sockJSConn.send(JSON.stringify({
+            type: "register",
+            address: e,
+            headers: i(this.defaultHeaders, n)
+        }))), this.handlers[e].push(t)
+    }, a.prototype.unregisterHandler = function (e, n, t) {
+        if (this.state != a.OPEN) throw new Error("INVALID_STATE_ERR");
+        var r = this.handlers[e];
+        if (r) {
+            "function" == typeof n && (t = n, n = {});
+            var o = r.indexOf(t);
+            -1 != o && (r.splice(o, 1), 0 === r.length && (this.sockJSConn.send(JSON.stringify({
+                type: "unregister",
                 address: e,
                 headers: i(this.defaultHeaders, n)
-            }))), this.handlers[e].push(t)
-        }, a.prototype.unregisterHandler = function (e, n, t) {
-            if (this.state != a.OPEN) throw new Error("INVALID_STATE_ERR");
-            var r = this.handlers[e];
-            if (r) {
-                "function" == typeof n && (t = n, n = {});
-                var o = r.indexOf(t);
-                -1 != o && (r.splice(o, 1), 0 === r.length && (this.sockJSConn.send(JSON.stringify({
-                    type: "unregister",
-                    address: e,
-                    headers: i(this.defaultHeaders, n)
-                })), delete this.handlers[e]))
-            }
-        }, a.prototype.close = function () {
-            this.state = a.CLOSING, this.enableReconnect(!1), this.sockJSConn.close()
-        }, a.CONNECTING = 0, a.OPEN = 1, a.CLOSING = 2, a.CLOSED = 3, a.prototype.enablePing = function (e) {
-            var n = this;
-            if (e) {
-                var t = function () {
-                    n.sockJSConn.send(JSON.stringify({type: "ping"}))
-                };
-                0 < n.pingInterval && (t(), n.pingTimerID = setInterval(t, n.pingInterval))
-            } else n.pingTimerID && (clearInterval(n.pingTimerID), n.pingTimerID = null)
-        }, a.prototype.enableReconnect = function (e) {
-            var n = this;
-            !(n.reconnectEnabled = e) && n.reconnectTimerID && (clearTimeout(n.reconnectTimerID), n.reconnectTimerID = null, n.reconnectAttempts = 0)
-        }, "undefined" == typeof exports) return a;
+            })), delete this.handlers[e]))
+        }
+    }, a.prototype.close = function () {
+        this.state = a.CLOSING, this.enableReconnect(!1), this.sockJSConn.close()
+    }, a.CONNECTING = 0, a.OPEN = 1, a.CLOSING = 2, a.CLOSED = 3, a.prototype.enablePing = function (e) {
+        var n = this;
+        if (e) {
+            var t = function () {
+                n.sockJSConn.send(JSON.stringify({type: "ping"}))
+            };
+            0 < n.pingInterval && (t(), n.pingTimerID = setInterval(t, n.pingInterval))
+        } else n.pingTimerID && (clearInterval(n.pingTimerID), n.pingTimerID = null)
+    }, a.prototype.enableReconnect = function (e) {
+        var n = this;
+        !(n.reconnectEnabled = e) && n.reconnectTimerID && (clearTimeout(n.reconnectTimerID), n.reconnectTimerID = null, n.reconnectAttempts = 0)
+    }, "undefined" == typeof exports) return a;
     "undefined" != typeof module && module.exports ? exports = module.exports = a : exports.EventBus = a
 });

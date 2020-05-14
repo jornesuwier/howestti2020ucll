@@ -12,12 +12,18 @@ function toggle(e) {
     let createroom = document.querySelector("#create");
 
     switch (id) {
-        case 'joinRoom': joinroom.classList.remove("hidden");
-        createroom.classList.add("hidden");break;
-        case 'createRoom': joinroom.classList.add("hidden");
-            createroom.classList.remove("hidden"); break;
-        default: joinroom.classList.add("hidden");
-            createroom.classList.add("hidden"); break;
+        case 'joinRoom':
+            joinroom.classList.remove("hidden");
+            createroom.classList.add("hidden");
+            break;
+        case 'createRoom':
+            joinroom.classList.add("hidden");
+            createroom.classList.remove("hidden");
+            break;
+        default:
+            joinroom.classList.add("hidden");
+            createroom.classList.add("hidden");
+            break;
     }
 
 }

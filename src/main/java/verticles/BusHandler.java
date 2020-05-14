@@ -14,8 +14,8 @@ import java.util.logging.Logger;
 
 public class BusHandler extends AbstractVerticle {
     private EventBus bus;
-    private Logger logger = Logger.getLogger(this.getClass().getName());
-    private Map<String, Quiz> quizzes = new HashMap<>();
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Map<String, Quiz> quizzes = new HashMap<>();
 
     private void handle(final Message message) {
         JsonObject data = (JsonObject) message.body();
@@ -26,12 +26,12 @@ public class BusHandler extends AbstractVerticle {
         logger.info(GID + " this is the session we looking for");
         switch (type) {
             case "Create":
-                    quizzes.put(GID,new Quiz(vertx.eventBus(), vertx, GID));
-                    JsonObject object = new JsonObject()
-                    .put("type", "loginReply").put("user",user).put("GID",GID);
-                    bus.publish(Config.HANDLER_URL, object);
-                    logger.info(user + " created room: " + GID);
-                    quizzes.get(GID).addPlayer(new Player(user));
+                quizzes.put(GID, new Quiz(vertx.eventBus(), vertx, GID));
+                JsonObject object = new JsonObject()
+                        .put("type", "loginReply").put("user", user).put("GID", GID);
+                bus.publish(Config.HANDLER_URL, object);
+                logger.info(user + " created room: " + GID);
+                quizzes.get(GID).addPlayer(new Player(user));
                 break;
             case "Join":
                 quizzes.get(GID).addPlayer(new Player(user));
@@ -44,8 +44,8 @@ public class BusHandler extends AbstractVerticle {
                 break;
             case "Answer":
                 String answer = content.getString("answer");
-                quizzes.get(GID).checkAnswer(user,content);
-                logger.info(user + " has answered: "+answer);
+                quizzes.get(GID).checkAnswer(user, content);
+                logger.info(user + " has answered: " + answer);
                 break;
             case "End":
                 quizzes.get(GID).getScoreBoard();
@@ -55,7 +55,7 @@ public class BusHandler extends AbstractVerticle {
                 String question = content.getString("question");
                 String answers = content.getString("answers");
                 int correct = content.getInteger("correct");
-                quizzes.get(GID).addQuestion(question,answers,correct);
+                quizzes.get(GID).addQuestion(question, answers, correct);
                 logger.info("new question added:" + content);
             default:
                 logger.info(data.toString());

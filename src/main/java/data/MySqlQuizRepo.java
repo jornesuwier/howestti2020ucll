@@ -16,10 +16,10 @@ public class MySqlQuizRepo {
   `CORRECT` INTEGER(10) NULL,
   PRIMARY KEY (`QUESTIONID`));
 */
-    private static String url = "jdbc:h2:~/quiz";
-    private static String sqlUser = "sa";
-    private static String sqlPass = "";
-    private static MySqlQuizRepo ourInstance = new MySqlQuizRepo();
+    private static final String url = "jdbc:h2:~/quiz";
+    private static final String sqlUser = "sa";
+    private static final String sqlPass = "";
+    private static final MySqlQuizRepo ourInstance = new MySqlQuizRepo();
 
     public static MySqlQuizRepo getInstance() {
         return ourInstance;
@@ -32,25 +32,29 @@ public class MySqlQuizRepo {
                 try (ResultSet rs = st.executeQuery()) {
                     while (rs.next()) {
                         List<String> answers = new ArrayList<>(Arrays.asList(rs.getString("answers").split(",")));
-                        questions.add(new Question(rs.getString("question"),answers,rs.getInt("correct")));
+                        questions.add(new Question(rs.getString("question"), answers, rs.getInt("correct")));
                     }
                     return questions;
                 }
             }
-        } catch (SQLException ex) {ex.printStackTrace();}
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
         return null;
     }
 
     public boolean addQuestions(String question, String answers, int correct) {
         try (Connection con = DriverManager.getConnection(url, sqlUser, sqlPass)) {
             try (PreparedStatement st = con.prepareStatement("INSERT INTO questions(question,answers,correct) VALUES (?,?,?)")) {
-                st.setString(1,question);
-                st.setString(2,answers);
-                st.setInt(3,correct);
+                st.setString(1, question);
+                st.setString(2, answers);
+                st.setInt(3, correct);
                 st.executeUpdate();
                 con.commit();
             }
-        } catch (SQLException ex) {ex.printStackTrace();}
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
         return true;
     }
 }
