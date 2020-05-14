@@ -143,4 +143,7 @@ gradle-app.setting
 /.idea/encodings.xml
 /.idea/compiler.xml
 /.idea/modules/
-/.idea/
+.idea/
+gradle/
+out/
+.vertx

@@ -4,6 +4,7 @@ import config.Config;
 import data.MySqlQuizRepo;
 import io.vertx.core.Vertx;
 import io.vertx.core.eventbus.EventBus;
+import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 
 import java.util.ArrayList;
@@ -74,6 +75,7 @@ public class Quiz {
             });
         }else {
             o.put("type", "End");
+            o.put("GID" ,UGID);
             putOnBus(o);
         }
     }
@@ -100,6 +102,22 @@ public class Quiz {
         activequestion = 0;
     }
 
+    public void getScoreBoard(){
+        JsonObject scoreboard = new JsonObject();
+        scoreboard.put("type", "Scoreboard");
+        JsonArray playerScore = new JsonArray();
+        for(Player p: players){
+            JsonObject o = new JsonObject();
+            o.put("user",p.getName());
+            o.put("score",p.getScore());
+            playerScore.add(o);
+        }
+        scoreboard.put("playerscores", playerScore);
+        putOnBus(scoreboard);
+
+
+    }
+
     private void putOnBus(JsonObject data) {
         try {
             bus.publish(Config.HANDLER_URL, data);
@@ -114,13 +132,5 @@ public class Quiz {
 
     }
 
-    public void getScoreBoard(){
-        JsonObject scoreboard = new JsonObject();
-        for(Player p: players){
-            scoreboard.put("type", "Scoreboard");
-            scoreboard.put("user", p.getScore());
-            scoreboard.put("score", p.getScore());
-        }
-        putOnBus(scoreboard);
-    }
+
 }
