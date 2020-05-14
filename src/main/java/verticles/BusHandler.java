@@ -49,9 +49,9 @@ public class BusHandler extends AbstractVerticle {
                 break;
             case "End":
                 quizzes.get(GID).getScoreBoard();
-                logger.info("Scoreboard send" + content);
+                logger.info("Scoreboard send");
                 break;
-            case "Question":
+            case "NewQuestion":
                 String question = content.getString("question");
                 String answers = content.getString("answers");
                 int correct = content.getInteger("correct");

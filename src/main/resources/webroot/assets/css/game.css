@@ -112,3 +112,11 @@ hr{
     cursor: pointer;
 }
 
+#scoreboard li{
+    padding: 2rem 10% 2rem 2%;
+    width: 50%;
+    font-weight: bold;
+    font-size: 2rem;
+    border: #bdbdbd 2px solid;
+    display: inline-block;
+}
