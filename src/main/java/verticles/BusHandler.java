@@ -1,6 +1,7 @@
 package verticles;
 
 import config.Config;
+import data.MySqlQuizRepo;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.eventbus.Message;
@@ -36,7 +37,6 @@ public class BusHandler extends AbstractVerticle {
             case "Join":
                 quizzes.get(GID).addPlayer(new Player(user));
                 logger.info(user + " joined room: " + GID);
-
                 break;
             case "Start":
                 quizzes.get(GID).start();
@@ -55,7 +55,7 @@ public class BusHandler extends AbstractVerticle {
                 String question = content.getString("question");
                 String answers = content.getString("answers");
                 int correct = content.getInteger("correct");
-                quizzes.get(GID).addQuestion(question, answers, correct);
+                MySqlQuizRepo.getInstance().addQuestions(question, answers, correct);
                 logger.info("new question added:" + content);
             default:
                 logger.info(data.toString());
@@ -69,4 +69,5 @@ public class BusHandler extends AbstractVerticle {
         bus = vertx.eventBus();
         bus.consumer(Config.HANDLER_URL, this::handle);
     }
+
 }

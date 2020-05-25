@@ -8,6 +8,9 @@ let GID = localStorage.getItem("GID");
 let QuestionId;
 
 function init() {
+    if(localStorage.getItem("name") === null || localStorage.getItem("name") === undefined || localStorage.getItem("name") === "" ){
+        window.location.href = "index.html"
+    }
     eb = new EventBus("http://" + window.location.host + "/socket/");
     eb.onopen = function () {
         onOpen();
@@ -148,9 +151,9 @@ function onOpen() {
 }
 
 function removeStartButton() {
-    const btn = document.querySelector("#start");
+    const btn = document.querySelector("#startQuiz");
     if (btn !== null) {
-        document.querySelector("#game").removeChild(btn);
+        btn.parentElement.removeChild(btn);
     }
 }
 

@@ -2,8 +2,12 @@
 /* global EventBus, document, console, messagelist */
 document.addEventListener("DOMContentLoaded", init);
 let eb = null;
+let name = localStorage.getItem("name");
 
 function init() {
+    if(localStorage.getItem("name") === null || localStorage.getItem("name") === undefined || localStorage.getItem("name") === "" ){
+        window.location.href = "index.html"
+    }
     eb = new EventBus("http://" + window.location.host + "/socket/");
     setTimeout(function () {
         sendtoBus("Connect", JSON.parse("{\"message\":\"hello\"}"));
@@ -18,7 +22,7 @@ function addQuestion(e) {
     let solution = document.querySelector("#solution").value;
     console.log(JSON.parse("{\"question\":\"" + question + "\",\"answers\":\"" + answers + "\",\"correct\":" + solution + "}"))
     sendtoBus("NewQuestion", JSON.parse("{\"question\":\"" + question + "\",\"answers\":\"" + answers + "\",\"correct\":" + solution + "}"));
-
+    location.reload();
 }
 
 function sendtoBus(type, content) {

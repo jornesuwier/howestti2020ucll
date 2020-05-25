@@ -7,13 +7,37 @@
     max-width: 80rem;
     margin: 0 auto;
 }
-
-input {
+a{
+    font-size: 1.8rem;
+    padding: 1rem 0;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: #56a5eb;
+    background-color: white;
+    display: block;
+}
+input,a {
     width: 100%;
 }
-
-#submit:hover {
+#submit:hover,a:hover {
     background-color: #56a5eb;
     color: #ecf5ff;
     cursor: pointer;
+}
+
+body {
+    background-color: #212121;
+    color: #bdbdbd;
+    font-family: 'Teko', Arial, sans-serif;
+}
+label {
+    font-size: 1.8rem;
+    padding: 1rem 0;
+    width: 20rem;
+    text-align: center;
+    text-decoration: none;
+}
+input{
+    margin-top: 1rem;
 }

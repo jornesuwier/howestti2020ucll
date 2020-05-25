@@ -135,7 +135,7 @@ hr {
     display: inline-block;
 }
 
-#joinRoom, #createRoom {
+#joinRoom, #createRoom, #addQuestion {
     text-transform: uppercase;
     letter-spacing: .1em;
     font: 4em "Oswald", sans-serif;

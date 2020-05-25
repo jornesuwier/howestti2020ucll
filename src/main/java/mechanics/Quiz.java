@@ -8,6 +8,7 @@ import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Quiz {
@@ -111,6 +112,7 @@ public class Quiz {
         JsonObject scoreboard = new JsonObject();
         scoreboard.put("type", "Scoreboard");
         JsonArray playerScore = new JsonArray();
+        players.sort((o1, o2) -> Integer.compare(o2.getScore(), o1.getScore()));
         for (Player p : players) {
             JsonObject o = new JsonObject();
             o.put("user", p.getName());
